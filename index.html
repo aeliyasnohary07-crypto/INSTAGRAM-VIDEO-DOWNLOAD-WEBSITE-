@@ -1,0 +1,100 @@
+<!DOCTYPE html><html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insta Reel Downloader</title>
+<style>
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#10101c;
+color:white;
+text-align:center;
+}
+header{
+padding:22px 10px;
+background:#191929;
+font-size:23px;
+font-weight:bold;
+}
+header span{color:#ff4c9b}
+main{
+max-width:500px;
+margin:65px auto;
+padding:25px;
+}
+h1{font-size:30px}
+p{color:#c4c4d5;line-height:1.6}
+input{
+width:100%;
+padding:16px;
+border:1px solid #555570;
+border-radius:10px;
+background:#222237;
+color:white;
+font-size:15px;
+margin:18px 0 12px;
+}
+button{
+width:100%;
+padding:15px;
+border:0;
+border-radius:10px;
+background:linear-gradient(90deg,#ff4c9b,#7957ff);
+color:white;
+font-size:17px;
+font-weight:bold;
+cursor:pointer;
+}
+#message{margin-top:20px;font-size:14px}
+footer{
+padding:25px;
+color:#aaa;
+font-size:13px;
+}
+</style>
+</head>
+<body>
+<header>📥 Insta <span>Reel Downloader</span></header>
+<main>
+<h1>Download Instagram Reels</h1>
+<p>अपने Instagram Reel का लिंक नीचे पेस्ट करें।</p>
+<input id="reel" type="url" placeholder="Paste Instagram Reel link here">
+<button onclick="downloadReel()">Download Reel</button>
+<div id="message"></div>
+</main>
+<footer>
+केवल अपने या अनुमति प्राप्त वीडियो डाउनलोड करें।<br><br>
+© 2026 Insta Reel Downloader
+</footer>
+<script>
+function downloadReel(){
+const input=document.getElementById('reel').value.trim();
+const message=document.getElementById('message');if(!input){
+message.textContent='पहले Instagram Reel का लिंक पेस्ट करें।';
+return;
+}
+
+try{
+const url=new URL(input);
+if(url.hostname!=='instagram.com' &&
+url.hostname!=='www.instagram.com' &&
+url.hostname!=='m.instagram.com'){
+message.textContent='कृपया सही Instagram लिंक डालें।';
+return;
+}
+if(!url.pathname.includes('/reel/') &&
+!url.pathname.includes('/reels/')){
+message.textContent='कृपया Instagram Reel का लिंक डालें।';
+return;
+}
+message.textContent='लिंक सही है, लेकिन वीडियो डाउनलोड करने के लिए सर्वर सिस्टम जोड़ना अभी बाकी है।';
+}catch(e){
+message.textContent='कृपया सही लिंक डालें।';
+}
+}
+</script>
+
+</body>
+</html>
